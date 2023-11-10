@@ -20,11 +20,16 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class Scraper {
 
-    public Collection<String> extractText(String uri) throws IOException {
+    public Collection<String> extractText(String uri) {
         Set<String> texts = new HashSet<>();
 
-        Document document = Jsoup.connect(uri)
-                .get();
+        Document document = null;
+        try {
+            document = Jsoup.connect(uri)
+                    .get();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         log.info("Title: {}, URI: {}", document.title(), uri);
 
         Elements content = document.select("div[id^=main], div[class^=main]");
