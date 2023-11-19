@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Scraper {
     public Collection<String> extractText(String uri) {
         Set<String> texts = new HashSet<>();
 
-        Document document = null;
+        Document document;
         try {
             document = Jsoup.connect(uri)
                     .get();
@@ -33,6 +34,10 @@ public class Scraper {
         log.info("Title: {}, URI: {}", document.title(), uri);
 
         Elements content = document.select("div[id^=main], div[class^=main]");
+        if (content.isEmpty()) {
+            return Arrays.stream(document.text().split(" "))
+                    .toList();
+        }
         for (Element element : content) {
             log.info("Element: {}", element.text());
             texts.add(element.text());

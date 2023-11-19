@@ -1,0 +1,26 @@
+openai:
+  model: "gpt-3:5-turbo"
+  assistant:
+    id: "asst_S8Z6eN4ieMzhjPDjmhNUWF5J"
+  api:
+    key: ${OPENAI_API_KEY}
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+spring:
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/moodplant
+    username: root
+    password: Root123$
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+    hibernate:
+      ddl-auto: update
