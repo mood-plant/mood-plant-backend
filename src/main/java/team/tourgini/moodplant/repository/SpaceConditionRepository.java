@@ -1,7 +1,7 @@
 package team.tourgini.moodplant.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import team.tourgini.moodplant.domain.SpaceCondition;
+import team.tourgini.moodplant.entity.SpaceCondition;
 
 import java.util.List;
 import java.util.Optional;

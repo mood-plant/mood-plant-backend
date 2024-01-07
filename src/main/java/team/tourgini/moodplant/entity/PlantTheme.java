@@ -1,4 +1,4 @@
-package team.tourgini.moodplant.domain;
+package team.tourgini.moodplant.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,20 +12,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class ResultPlant {
+public class PlantTheme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Result result;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     private Plant plant;
 
-    public ResultPlant(Result result, Plant plant) {
-        this.result = result;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Theme theme;
+
+    public PlantTheme(Plant plant, Theme theme) {
         this.plant = plant;
+        this.theme = theme;
     }
 }

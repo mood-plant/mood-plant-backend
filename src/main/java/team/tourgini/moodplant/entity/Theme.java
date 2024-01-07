@@ -1,31 +1,36 @@
-package team.tourgini.moodplant.domain;
+package team.tourgini.moodplant.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
-public class PlantSpaceCondition {
+public class Theme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Plant plant;
+    @Column(name = "value")
+    private String value;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private SpaceCondition spaceCondition;
+    private Result result;
 
-    public PlantSpaceCondition(Plant plant, SpaceCondition spaceCondition) {
-        this.plant = plant;
-        this.spaceCondition = spaceCondition;
-    }
+    @OneToMany(mappedBy = "theme")
+    private final List<PlantTheme> plantThemes = new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package team.tourgini.moodplant.domain;
+package team.tourgini.moodplant.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -6,14 +6,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
-public class ResultProduct {
+public class ResultSpaceCondition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +24,10 @@ public class ResultProduct {
     private Result result;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Product product;
+    private SpaceCondition spaceCondition;
 
-    public ResultProduct(Result result, Product product) {
+    public ResultSpaceCondition(Result result, SpaceCondition spaceCondition) {
         this.result = result;
-        this.product = product;
+        this.spaceCondition = spaceCondition;
     }
 }

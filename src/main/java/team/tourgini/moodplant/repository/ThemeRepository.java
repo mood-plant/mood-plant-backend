@@ -1,7 +1,7 @@
 package team.tourgini.moodplant.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import team.tourgini.moodplant.domain.Theme;
+import team.tourgini.moodplant.entity.Theme;
 
 import java.util.List;
 import java.util.Optional;

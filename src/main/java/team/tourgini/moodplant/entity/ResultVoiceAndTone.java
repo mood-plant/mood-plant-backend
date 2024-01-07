@@ -1,4 +1,4 @@
-package team.tourgini.moodplant.domain;
+package team.tourgini.moodplant.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,7 +14,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResultTheme {
+public class ResultVoiceAndTone {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,10 +24,10 @@ public class ResultTheme {
     private Result result;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Theme theme;
+    private VoiceAndTone voiceAndTone;
 
-    public ResultTheme(Result result, Theme theme) {
+    public ResultVoiceAndTone(Result result, VoiceAndTone voiceAndTone) {
         this.result = result;
-        this.theme = theme;
+        this.voiceAndTone = voiceAndTone;
     }
 }

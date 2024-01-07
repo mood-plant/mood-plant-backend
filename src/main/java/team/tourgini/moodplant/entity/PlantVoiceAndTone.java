@@ -1,4 +1,4 @@
-package team.tourgini.moodplant.domain;
+package team.tourgini.moodplant.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
